@@ -66,7 +66,9 @@ export function Hero() {
             </span>
             , people, and trust.
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-soft">{profile.tagline}</p>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-soft">
+            {profile.tagline}
+          </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
@@ -82,12 +84,12 @@ export function Hero() {
             >
               Download CV (PDF)
             </a>
-            <a
+            {/* <a
               href={`mailto:${profile.email}`}
               className="px-2 py-3 text-sm text-soft underline-offset-4 transition-colors hover:text-brand hover:underline"
             >
               {profile.email}
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -100,7 +102,10 @@ export function Hero() {
             <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-soft">
               Impact ledger
             </h2>
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-brand" />
+            <span
+              aria-hidden="true"
+              className="h-2 w-2 rounded-full bg-brand"
+            />
           </div>
           {impactLedger.map((item, i) => (
             <LedgerRow key={item.label} index={i} {...item} />
