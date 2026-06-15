@@ -34,18 +34,37 @@ function LedgerRow({
 
 export function Hero() {
   return (
-    <section id="top" aria-label="Introduction" className="mx-auto max-w-6xl px-5 pt-32 pb-16 sm:px-8 md:pt-40 md:pb-24">
+    <section
+      id="top"
+      aria-label="Introduction"
+      className="relative mx-auto max-w-6xl overflow-hidden px-5 pt-32 pb-16 sm:px-8 md:pt-40 md:pb-24"
+    >
+      <div aria-hidden="true" className="hero-glow" />
       <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-brand">
             {profile.role} · {profile.location}
           </p>
-          <h1 className="font-display mt-5 text-4xl leading-[1.05] font-extrabold tracking-tightest text-body sm:text-5xl md:text-6xl">
-            Frontend for systems
-            <br />
-            that move <span className="text-brand">money</span>,
-            <br />
-            people, and trust.
+          <h1 className="font-display mt-5 text-4xl leading-[1.15] font-bold tracking-tightest text-body sm:text-5xl md:text-6xl">
+            Frontend for systems that move{" "}
+            <span className="relative inline-block text-brand">
+              money
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 120 14"
+                preserveAspectRatio="none"
+                className="absolute -bottom-1.5 left-0 h-3 w-full text-brand"
+              >
+                <path
+                  d="M2 8 C 20 2, 40 12, 60 6 S 100 2, 118 8"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            , people, and trust.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-soft">{profile.tagline}</p>
 

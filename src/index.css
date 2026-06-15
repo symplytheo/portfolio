@@ -4,24 +4,24 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* ——— Palette: "Ledger green" — finance-grade trust, cool neutrals ——— */
-  --color-paper: #f6f7f5;
+  /* ——— Palette: "Sunset Ledger" — warm terracotta on near-black/cream ——— */
+  --color-paper: #fbf5ee;
   --color-surface: #ffffff;
-  --color-ink: #14201b;
-  --color-muted: #5b6a63;
-  --color-line: #dce2dd;
-  --color-accent: #0e7a5f;
-  --color-accent-strong: #0a5c48;
-  --color-accent-soft: #e3f0ea;
+  --color-ink: #241a12;
+  --color-muted: #766858;
+  --color-line: #ece2d6;
+  --color-accent: #c2410c;
+  --color-accent-strong: #9a3409;
+  --color-accent-soft: #fbe4d4;
 
   /* Dark counterparts are applied via CSS variables below */
 
   /* ——— Type ——— */
-  --font-display: "Archivo", system-ui, sans-serif;
-  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-display: "Lora", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  --tracking-tightest: -0.04em;
+  --tracking-tightest: -0.01em;
 
   /* ——— Motion ——— */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -41,14 +41,14 @@
 }
 
 .dark {
-  --bg: #0c1110;
-  --bg-raised: #131a17;
-  --fg: #e8ede9;
-  --fg-muted: #93a39b;
-  --border: #243029;
-  --brand: #3ecf9a;
-  --brand-strong: #6fe0b6;
-  --brand-soft: #15241e;
+  --bg: #0c0a08;
+  --bg-raised: #1a1512;
+  --fg: #f5efe8;
+  --fg-muted: #a89c90;
+  --border: #2e2620;
+  --brand: #ff8a5b;
+  --brand-strong: #ffab85;
+  --brand-soft: #2b1a10;
   color-scheme: dark;
 }
 
@@ -95,6 +95,9 @@
   .bg-raised {
     background-color: var(--bg-raised);
   }
+  .bg-raised-glass {
+    background-color: color-mix(in srgb, var(--bg-raised) 75%, transparent);
+  }
   .bg-brand {
     background-color: var(--brand);
   }
@@ -103,6 +106,22 @@
   }
   .border-line {
     border-color: var(--border);
+  }
+
+  /* Decorative sunset glow behind the hero — pure gradient, no blur filter */
+  .hero-glow {
+    position: absolute;
+    top: -12%;
+    right: -8%;
+    width: 55%;
+    max-width: 640px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--brand) 0%, transparent 70%);
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  .dark .hero-glow {
+    opacity: 0.22;
   }
 
   /* Scroll-reveal primitives (toggled by useReveal) */

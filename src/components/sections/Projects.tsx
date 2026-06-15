@@ -1,5 +1,5 @@
 import { projects } from "../../data";
-import { ProjectVisual } from "../ui/ProjectVisual";
+// import { ProjectVisual } from "../ui/ProjectVisual";
 import { Section } from "../ui/Section";
 import { Tag } from "../ui/Tag";
 
@@ -20,7 +20,7 @@ export function Projects() {
             key={project.name}
             className="group flex flex-col rounded-2xl border border-line bg-raised p-6 transition-colors hover:border-(--brand) sm:p-7"
           >
-            <ProjectVisual />
+            {/* <ProjectVisual /> */}
             <div className="flex items-center justify-between">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-brand">
                 {project.category}
