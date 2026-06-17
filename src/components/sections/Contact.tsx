@@ -18,7 +18,7 @@ export function Contact() {
             >
               {profile.email}
             </a>
-            <p className="mt-3 font-mono text-sm text-soft">{profile.phone} · {profile.location}</p>
+            {/* <p className="mt-3 font-mono text-sm text-soft">{profile.phone} · {profile.location}</p> */}
           </div>
           <div className="flex flex-wrap gap-3">
             <a
