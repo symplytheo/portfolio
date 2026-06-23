@@ -7,7 +7,7 @@ export function Contact() {
       id="contact"
       eyebrow="Contact"
       title="Let's build something dependable"
-      lead="I'm open to senior frontend roles, contract engagements, and conversations about hard frontend problems. The fastest way to reach me is email — I reply within a business day."
+      lead="I'm open to senior software and frontend roles, contract engagements, and conversations about hard product-engineering problems. The fastest way to reach me is email — I reply within a business day."
     >
       <div className="rounded-2xl border border-line bg-raised p-7 sm:p-10">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">

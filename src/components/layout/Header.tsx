@@ -32,7 +32,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
         <a href="#top" className="font-display text-sm font-bold tracking-tightest text-body">
           T<span className="text-brand">.</span>Iyonor
           <span className="ml-2 hidden font-mono text-xs font-normal text-soft sm:inline">
-            / frontend engineer
+            / software engineer
           </span>
         </a>
 
