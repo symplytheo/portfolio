@@ -10,6 +10,7 @@ import { Skills } from "./components/sections/Skills";
 import { Education } from "./components/sections/Education";
 import { Services } from "./components/sections/Services";
 import { Contact } from "./components/sections/Contact";
+import { WhatsAppFab } from "./components/ui/WhatsAppFab";
 import { useTheme } from "./hooks/useTheme";
 
 // The résumé is its own route and chunk, so it costs the home page nothing.
@@ -52,6 +53,7 @@ export default function App() {
       <div className="no-print">
         <Footer />
       </div>
+      <WhatsAppFab />
     </>
   );
 }

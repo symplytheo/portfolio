@@ -40,6 +40,7 @@ export function Contact() {
           {[
             { href: profile.social.linkedin, label: "LinkedIn", external: true },
             { href: profile.social.github, label: "GitHub", external: true },
+            { href: profile.social.whatsapp, label: "WhatsApp", external: true },
             { href: profile.social.x, label: "X / Twitter", external: true },
             { href: profile.resumePage, label: "Résumé", external: false },
           ].map((link) => (

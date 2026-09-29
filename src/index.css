@@ -270,6 +270,12 @@
         badge-sway 6s 1.4s ease-in-out infinite;
     }
   }
+  @keyframes fab-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.9);
+    }
+  }
   @keyframes badge-sway {
     0%,
     100% {

@@ -32,6 +32,10 @@ export const profile = {
     github: "https://github.com/symplytheo",
     linkedin: "https://www.linkedin.com/in/symplytheo/",
     x: "https://x.com/symplytheo",
+    /** wa.me link with a prefilled first message */
+    whatsapp: `https://wa.me/2348032616345?text=${encodeURIComponent(
+      "Hey Theo! I came across your portfolio and really liked your work. I'd love to chat with you about a project.",
+    )}`,
   },
 } as const;
 
