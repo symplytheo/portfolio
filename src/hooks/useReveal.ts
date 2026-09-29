@@ -20,7 +20,9 @@ export function useReveal<T extends HTMLElement>() {
           }
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+      // Trigger on the first visible pixel (a ratio threshold can never be met by
+      // sections taller than the viewport ÷ ratio — e.g. Projects on a phone).
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" },
     );
 
     observer.observe(el);
