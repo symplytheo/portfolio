@@ -7,7 +7,8 @@ export function Skills() {
   return (
     <Section
       id="skills"
-      eyebrow="Skills"
+      index="04"
+      eyebrow="Toolkit"
       title="Tools chosen for the job, not the trend"
       lead="Deep in both major frontend ecosystems — React/Next.js and Vue/Nuxt — with enough backend fluency (NestJS, REST, GraphQL) to design the full data contract."
     >

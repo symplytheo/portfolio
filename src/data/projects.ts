@@ -1,4 +1,12 @@
-/** Production projects, featured first. */
+import softpay from "../assets/projects/softpay.webp";
+import softpayApp from "../assets/projects/softpay-app.webp";
+import ebioverify from "../assets/projects/ebioverify.webp";
+import ebioverifyApp from "../assets/projects/ebioverify-app.webp";
+import softsuite from "../assets/projects/softsuite.webp";
+import softsuiteApp from "../assets/projects/softsuite-app.webp";
+import leyyow from "../assets/projects/leyyow.webp";
+import earwac from "../assets/projects/earwac.webp";
+import cmda from "../assets/projects/cmda.webp";
 
 export interface Project {
   name: string;
@@ -8,6 +16,7 @@ export interface Project {
   stack: string[];
   role: string;
   link?: string;
+  shots?: { src: string; host: string }[];
   featured?: boolean;
 }
 
@@ -23,6 +32,10 @@ export const projects: Project[] = [
     role: "Frontend lead",
     featured: true,
     link: "https://softpay.ng",
+    shots: [
+      { src: softpay, host: "softpay.ng" },
+      { src: softpayApp, host: "dashboard.softpay.ng" },
+    ],
   },
   {
     name: "EbioVerify",
@@ -35,6 +48,10 @@ export const projects: Project[] = [
     role: "Full-stack (frontend lead)",
     featured: true,
     link: "https://ebioverify.com",
+    shots: [
+      { src: ebioverifyApp, host: "app.ebioverify.com" },
+      { src: ebioverify, host: "ebioverify.com" },
+    ],
   },
   {
     name: "SoftSuite",
@@ -46,6 +63,10 @@ export const projects: Project[] = [
     role: "Frontend lead",
     featured: true,
     link: "https://softsuite.com",
+    shots: [
+      { src: softsuiteApp, host: "hcm.softsuite.com" },
+      { src: softsuite, host: "softsuite.com" },
+    ],
   },
   {
     name: "Leyyow",
@@ -57,6 +78,7 @@ export const projects: Project[] = [
     role: "Senior frontend engineer",
     featured: true,
     link: "https://www.leyyow.com",
+    shots: [{ src: leyyow, host: "leyyow.com" }],
   },
   {
     name: "EARWAC",
@@ -67,7 +89,9 @@ export const projects: Project[] = [
       "Interactive mapping and data visualisation for climate-risk insight.",
     stack: ["Vue", "Nuxt", "Leaflet"],
     role: "Frontend engineer",
+    featured: true,
     link: "https://earwac.com",
+    shots: [{ src: earwac, host: "earwac.com" }],
   },
   {
     name: "CMDA Nigeria",
@@ -77,6 +101,8 @@ export const projects: Project[] = [
     impact: "Full-stack delivery from API design to UI.",
     stack: ["NestJS", "React", "TypeScript"],
     role: "Full-stack engineer",
+    featured: true,
     link: "https://cmdanigeria.net/",
+    shots: [{ src: cmda, host: "cmdanigeria.net" }],
   },
 ];

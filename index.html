@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0c0a08" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#fbf5ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16100c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f3e9dc" media="(prefers-color-scheme: light)" />
 
-    <title>Theophilus Iyonor — Senior Software Engineer | Frontend, React, Vue, TypeScript</title>
+    <title>Theophilus Iyonor — Software Engineer | Frontend, React, Vue, TypeScript</title>
     <meta
       name="description"
-      content="Senior Software Engineer with deep frontend specialisation, building enterprise fintech, payroll, and identity platforms with React, Vue, Next.js, Nuxt, Node, and TypeScript. Systems processing ₦1B+ monthly and verifying 215,000+ public-sector employees."
+      content="Software Engineer with deep frontend specialisation, building enterprise fintech, payroll, and identity platforms with React, Vue, Next.js, Nuxt, Node, and TypeScript. Systems processing ₦1B+ monthly and verifying 215,000+ public-sector employees."
     />
     <meta
       name="keywords"
-      content="Theophilus Iyonor, Senior Software Engineer, Frontend Engineer, Full-Stack Engineer, React Developer, Vue.js Developer, TypeScript, Next.js, Nuxt.js, Node.js, NestJS, Frontend Architect, Fintech Engineer, Nigeria, Remote Software Engineer"
+      content="Theophilus Iyonor, Software Engineer, Frontend Engineer, Full-Stack Engineer, React Developer, Vue.js Developer, TypeScript, Next.js, Nuxt.js, Node.js, NestJS, Frontend Architect, Fintech Engineer, Nigeria, Remote Software Engineer"
     />
     <meta name="author" content="Theophilus O. Iyonor" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -22,7 +22,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://symplytheo.dev/" />
-    <meta property="og:title" content="Theophilus Iyonor — Senior Software Engineer" />
+    <meta property="og:title" content="Theophilus Iyonor — Software Engineer" />
     <meta
       property="og:description"
       content="Frontend-deep software engineering for payments, payroll, and identity systems. React · Vue · Next.js · Nuxt · Node · TypeScript. ₦1B+ monthly transaction volume, 215,000+ verified employees."
@@ -34,7 +34,7 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Theophilus Iyonor — Senior Software Engineer" />
+    <meta name="twitter:title" content="Theophilus Iyonor — Software Engineer" />
     <meta
       name="twitter:description"
       content="Frontend-deep software engineering for payments, payroll, and identity systems. React · Vue · Next.js · Node · TypeScript."
@@ -44,11 +44,20 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- Apply the saved/system theme before first paint (avoids a light flash in dark mode) -->
+    <script>
+      try {
+        var t = localStorage.getItem("theo-theme");
+        if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches))
+          document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+
     <!-- Fonts: preconnect + single stylesheet request -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -63,8 +72,7 @@
             "name": "Theophilus O. Iyonor",
             "url": "https://symplytheo.dev/",
             "email": "mailto:symplytheo@gmail.com",
-            "telephone": "+2348032616345",
-            "jobTitle": "Senior Software Engineer",
+            "jobTitle": "Software Engineer",
             "worksFor": { "@type": "Organization", "name": "Soft Alliance and Resources Limited" },
             "alumniOf": {
               "@type": "CollegeOrUniversity",
@@ -78,14 +86,15 @@
             ],
             "sameAs": [
               "https://github.com/symplytheo",
-              "https://www.linkedin.com/in/symplytheo/"
+              "https://www.linkedin.com/in/symplytheo/",
+              "https://x.com/symplytheo"
             ]
           },
           {
             "@type": "WebSite",
             "@id": "https://symplytheo.dev/#website",
             "url": "https://symplytheo.dev/",
-            "name": "Theophilus Iyonor — Senior Software Engineer",
+            "name": "Theophilus Iyonor — Software Engineer",
             "publisher": { "@id": "https://symplytheo.dev/#person" },
             "inLanguage": "en"
           }

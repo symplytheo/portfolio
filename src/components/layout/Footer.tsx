@@ -5,8 +5,8 @@ export function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-5 py-10 sm:flex-row sm:items-center sm:px-8">
         <p className="font-mono text-xs text-soft">
-          &copy; {new Date().getFullYear()} {profile.name}. Built with React,
-          Vite & TailwindCSS.
+          &copy; {new Date().getFullYear()} {profile.name}. Designed &amp; built by me — React, Vite
+          &amp; TailwindCSS.
         </p>
         <ul className="flex items-center gap-5">
           <li>

@@ -10,9 +10,15 @@ interface HeaderProps {
 export function Header({ theme, onToggleTheme }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      // Band-tinted glass while the nav sits over the hero
+      const hero = document.getElementById("top");
+      setOverHero(!!hero && window.scrollY < hero.offsetHeight - 72);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -25,11 +31,11 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <nav
         aria-label="Primary"
-        className={`mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-line bg-raised-glass px-5 shadow-sm backdrop-blur-sm transition-shadow sm:px-4 ${
-          scrolled ? "shadow-md" : ""
+        className={`mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-line px-5 backdrop-blur-md transition-[background-color,box-shadow] duration-300 sm:px-4 ${
+          overHero ? "band bg-[color-mix(in_srgb,var(--band)_60%,transparent)]!" : `bg-raised-glass shadow-sm ${scrolled ? "shadow-md" : ""}`
         }`}
       >
-        <a href="#top" className="font-display text-sm font-bold tracking-tightest text-body">
+        <a href="/#top" className="font-display text-base font-extrabold tracking-tightest text-body">
           T<span className="text-brand">.</span>Iyonor
           <span className="ml-2 hidden font-mono text-xs font-normal text-soft sm:inline">
             / software engineer
@@ -51,11 +57,10 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
           </ul>
 
           <a
-            href={profile.resumeUrl}
-            download
-            className="hidden rounded-full bg-brand px-4 py-2 text-sm font-medium text-(--bg) transition-opacity hover:opacity-90 md:inline-block"
+            href={profile.resumePage}
+            className="hidden rounded-full bg-brand px-4 py-2 text-sm on-brand font-semibold transition-opacity hover:opacity-90 md:inline-block"
           >
-            Download CV
+            Résumé
           </a>
 
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
@@ -91,12 +96,11 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             ))}
             <li className="pt-2">
               <a
-                href={profile.resumeUrl}
-                download
+                href={profile.resumePage}
                 onClick={close}
                 className="block rounded-full bg-brand px-4 py-3 text-center text-sm font-medium text-(--bg)"
               >
-                Download CV
+                Résumé
               </a>
             </li>
           </ul>

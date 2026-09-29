@@ -1,52 +1,60 @@
 import { profile } from "../../data";
-import { Section } from "../ui/Section";
 
 export function Contact() {
   return (
-    <Section
+    <section
       id="contact"
-      eyebrow="Contact"
-      title="Let's build something dependable"
-      lead="I'm open to senior software and frontend roles, contract engagements, and conversations about hard product-engineering problems. The fastest way to reach me is email — I reply within a business day."
+      aria-labelledby="contact-title"
+      className="band band-grid relative scroll-mt-24 overflow-hidden"
     >
-      <div className="rounded-2xl border border-line bg-raised p-7 sm:p-10">
-        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-          <div>
-            <a
-              href={`mailto:${profile.email}`}
-              className="font-display text-2xl font-bold tracking-tightest text-brand underline-offset-8 hover:underline sm:text-3xl"
-            >
-              {profile.email}
-            </a>
-            {/* <p className="mt-3 font-mono text-sm text-soft">{profile.phone} · {profile.location}</p> */}
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={profile.social.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-line px-5 py-2.5 text-sm font-medium text-body transition-colors hover:border-(--brand)"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={profile.social.github}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-line px-5 py-2.5 text-sm font-medium text-body transition-colors hover:border-(--brand)"
-            >
-              GitHub
-            </a>
-            <a
-              href={profile.resumeUrl}
-              download
-              className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-(--bg) transition-opacity hover:opacity-90"
-            >
-              Download CV
-            </a>
-          </div>
+      <div className="mx-auto max-w-6xl px-5 py-24 text-center sm:px-8 md:py-32">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-brand">
+          <span className="text-soft">07 /</span> Contact
+        </p>
+        <h2
+          id="contact-title"
+          className="font-display mx-auto mt-5 max-w-4xl text-5xl leading-[0.98] font-extrabold tracking-tightest sm:text-7xl md:text-8xl"
+        >
+          Got a hard problem?
+          <br />
+          <span className="text-brand">Let's build it.</span>
+        </h2>
+        <p className="text-soft mx-auto mt-7 max-w-xl text-lg leading-relaxed">
+          Open to software engineering roles, contract engagements, and conversations about hard
+          product-engineering problems.
+        </p>
+
+        <div className="relative mx-auto mt-10 inline-block">
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-block rounded-full bg-brand px-8 py-4 text-base on-brand font-semibold transition-transform hover:-translate-y-0.5 sm:text-lg"
+          >
+            {profile.email}
+          </a>
+          <p aria-hidden="true" className="note absolute top-1/2 -right-44 hidden w-40 -translate-y-1/2 rotate-[-4deg] text-left text-xl text-brand lg:block">
+            ← I reply within a business day
+          </p>
         </div>
+
+        <ul className="mt-8 flex flex-wrap justify-center gap-3">
+          {[
+            { href: profile.social.linkedin, label: "LinkedIn", external: true },
+            { href: profile.social.github, label: "GitHub", external: true },
+            { href: profile.social.x, label: "X / Twitter", external: true },
+            { href: profile.resumePage, label: "Résumé", external: false },
+          ].map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                className="inline-block rounded-full border border-line px-5 py-2.5 text-sm font-medium transition-colors hover:border-(--brand)"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </Section>
+    </section>
   );
 }

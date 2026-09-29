@@ -13,15 +13,15 @@
   --color-accent: #c2410c;
   --color-accent-strong: #9a3409;
   --color-accent-soft: #fbe4d4;
-
-  /* Dark counterparts are applied via CSS variables below */
+  --color-tape: #f6d38a;
 
   /* ——— Type ——— */
-  --font-display: "Lora", Georgia, serif;
+  --font-display: "Bricolage Grotesque", "Plus Jakarta Sans", system-ui, sans-serif;
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-hand: "Caveat", "Segoe Print", cursive;
 
-  --tracking-tightest: -0.01em;
+  --tracking-tightest: -0.03em;
 
   /* ——— Motion ——— */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -37,6 +37,15 @@
   --brand: var(--color-accent);
   --brand-strong: var(--color-accent-strong);
   --brand-soft: var(--color-accent-soft);
+  --dot: color-mix(in srgb, var(--color-ink) 9%, transparent);
+
+  /* Feature bands (hero, closing CTA): a deeper cream in light mode, warm ink in dark */
+  --band: #f3e9dc;
+  --band-raised: #ffffff;
+  --band-fg: #241a12;
+  --band-muted: #6f6152;
+  --band-line: #e2d3c2;
+  --band-brand: #c2410c;
   color-scheme: light;
 }
 
@@ -49,7 +58,20 @@
   --brand: #ff8a5b;
   --brand-strong: #ffab85;
   --brand-soft: #2b1a10;
+  --dot: color-mix(in srgb, #f5efe8 6%, transparent);
   color-scheme: dark;
+}
+
+/* Dark band palette. `.ink` pins a band dark in both themes (e.g. the highlighted pricing card).
+   Unlayered like :root above, so it can override the light values. */
+.dark,
+.ink {
+  --band: #16100c;
+  --band-raised: #221a14;
+  --band-fg: #f7f0e8;
+  --band-muted: #b3a597;
+  --band-line: #33291f;
+  --band-brand: #ff8a5b;
 }
 
 @layer base {
@@ -59,6 +81,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -108,20 +131,153 @@
     border-color: var(--border);
   }
 
-  /* Decorative sunset glow behind the hero — pure gradient, no blur filter */
-  .hero-glow {
-    position: absolute;
-    top: -12%;
-    right: -8%;
-    width: 55%;
-    max-width: 640px;
-    aspect-ratio: 1;
-    background: radial-gradient(circle, var(--brand) 0%, transparent 70%);
-    opacity: 0.16;
-    pointer-events: none;
+  /* Subtle dotted paper behind light sections */
+  .bg-dots {
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
-  .dark .hero-glow {
-    opacity: 0.22;
+
+  /* ——— Feature band (hero + closing CTA) ——— */
+  .band {
+    --brand: var(--band-brand);
+    background-color: var(--band);
+    color: var(--band-fg);
+  }
+  .band .text-soft {
+    color: var(--band-muted);
+  }
+  .band .border-line {
+    border-color: var(--band-line);
+  }
+  .band .text-body {
+    color: var(--band-fg);
+  }
+  .band .bg-raised {
+    background-color: var(--band-raised);
+  }
+  /* Text on a brand-coloured fill */
+  .on-brand {
+    color: var(--bg);
+  }
+  .band .on-brand {
+    color: var(--band);
+  }
+  /* Blueprint grid + a spotlight that follows the pointer (--mx / --my) */
+  .band-grid {
+    background-image:
+      radial-gradient(520px circle at var(--mx, 70%) var(--my, 35%), color-mix(in srgb, var(--band-brand) var(--glow, 20%), transparent), transparent 70%),
+      linear-gradient(color-mix(in srgb, var(--band-fg) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--band-fg) 6%, transparent) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      56px 56px,
+      56px 56px;
+  }
+
+  /* Hand-written annotation */
+  .note {
+    font-family: var(--font-hand);
+    font-weight: 600;
+    line-height: 1.05;
+  }
+
+  /* Strip of masking tape stuck across a corner */
+  .tape {
+    position: absolute;
+    width: 92px;
+    height: 26px;
+    background: color-mix(in srgb, var(--color-tape) 78%, transparent);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+    mask: linear-gradient(90deg, transparent 0 3px, #000 3px calc(100% - 3px), transparent calc(100% - 3px));
+    z-index: 2;
+  }
+
+  /* Outlined numerals for section/project indices */
+  .num-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--brand);
+  }
+
+  /* ——— Tool marquee ——— */
+  .marquee {
+    mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track {
+    animation: marquee 45s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* ——— Access badge ——— */
+  .badge-rig {
+    perspective: 1100px;
+  }
+  .badge-swing {
+    transform-origin: 50% 0;
+    transform: rotate(var(--swing, 0deg));
+    animation: badge-drop 1.4s var(--ease-out-soft) both;
+  }
+  .badge-card {
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tx, 0deg)) rotateY(calc(var(--ty, 0deg) + var(--flip, 0deg)));
+    transition: transform 0.6s var(--ease-out-soft);
+  }
+  .badge-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .badge-back {
+    transform: rotateY(180deg);
+  }
+  /* Holographic sheen that slides as the card tilts */
+  .badge-sheen {
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.22) 45%,
+      rgb(255 214 170 / 0.14) 52%,
+      transparent 65%
+    );
+    background-size: 250% 100%;
+    background-position: calc(50% + var(--ty, 0deg) / 1deg * 4%) 0;
+    mix-blend-mode: soft-light;
+  }
+  @keyframes badge-drop {
+    0% {
+      transform: translateY(-110%) rotate(8deg);
+    }
+    55% {
+      transform: translateY(0) rotate(-5deg);
+    }
+    75% {
+      transform: rotate(2.5deg);
+    }
+    100% {
+      transform: rotate(var(--swing, 0deg));
+    }
+  }
+  /* Touch devices: a gentle idle sway instead of pointer tracking */
+  @media (pointer: coarse) {
+    .badge-swing {
+      animation:
+        badge-drop 1.4s var(--ease-out-soft) both,
+        badge-sway 6s 1.4s ease-in-out infinite;
+    }
+  }
+  @keyframes badge-sway {
+    0%,
+    100% {
+      transform: rotate(-1.5deg);
+    }
+    50% {
+      transform: rotate(1.5deg);
+    }
   }
 
   /* Scroll-reveal primitives (toggled by useReveal) */
@@ -143,8 +299,37 @@
       transform: none;
       transition: none;
     }
+    .marquee-track,
+    .badge-swing {
+      animation: none !important;
+    }
+    .badge-card {
+      transition: none;
+    }
     html {
       scroll-behavior: auto;
     }
+  }
+}
+
+/* ——— Print: the résumé page doubles as the PDF ——— */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  :root,
+  .dark {
+    --bg: #fff;
+    --bg-raised: #fff;
+    --fg: #111;
+    --fg-muted: #444;
+    --border: #ddd;
+    --brand: #9a3409;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-avoid-break {
+    break-inside: avoid;
   }
 }

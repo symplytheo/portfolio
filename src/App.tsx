@@ -1,13 +1,20 @@
+import { lazy, Suspense } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { Hero } from "./components/sections/Hero";
-import { About } from "./components/sections/About";
-import { Skills } from "./components/sections/Skills";
-import { Experience } from "./components/sections/Experience";
+import { ToolMarquee } from "./components/sections/ToolMarquee";
 import { Projects } from "./components/sections/Projects";
+import { About } from "./components/sections/About";
+import { Experience } from "./components/sections/Experience";
+import { Skills } from "./components/sections/Skills";
 import { Education } from "./components/sections/Education";
+import { Services } from "./components/sections/Services";
 import { Contact } from "./components/sections/Contact";
 import { useTheme } from "./hooks/useTheme";
+
+// The résumé is its own route and chunk, so it costs the home page nothing.
+const Resume = lazy(() => import("./components/resume/Resume"));
+const isResume = window.location.pathname.replace(/\/+$/, "") === "/resume";
 
 export default function App() {
   const { theme, toggle } = useTheme();
@@ -20,17 +27,31 @@ export default function App() {
       >
         Skip to main content
       </a>
-      <Header theme={theme} onToggleTheme={toggle} />
-      <main id="main">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
+      <div className="no-print">
+        <Header theme={theme} onToggleTheme={toggle} />
+      </div>
+      {isResume ? (
+        <Suspense fallback={<main id="main" className="min-h-screen" />}>
+          <Resume />
+        </Suspense>
+      ) : (
+        <main id="main">
+          <Hero />
+          <ToolMarquee />
+          <div className="bg-dots">
+            <Projects />
+            <About />
+            <Experience />
+            <Skills />
+            <Education />
+            <Services />
+          </div>
+          <Contact />
+        </main>
+      )}
+      <div className="no-print">
+        <Footer />
+      </div>
     </>
   );
 }

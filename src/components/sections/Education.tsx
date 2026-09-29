@@ -3,7 +3,7 @@ import { Section } from "../ui/Section";
 
 export function Education() {
   return (
-    <Section id="education" eyebrow="Education & Credentials" title="Foundations">
+    <Section id="education" index="05" eyebrow="Education & Credentials" title="Foundations">
       <div className="grid gap-5 md:grid-cols-2">
         {education.map((entry) => (
           <article key={entry.institution} className="rounded-2xl border border-line bg-raised p-6 sm:p-7">

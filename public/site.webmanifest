@@ -1,8 +1,8 @@
 {
-  "name": "Theophilus Iyonor — Senior Frontend Engineer",
+  "name": "Theophilus Iyonor — Software Engineer",
   "short_name": "T. Iyonor",
   "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
-  "theme_color": "#0E7A5F",
-  "background_color": "#F6F7F5",
+  "theme_color": "#f3e9dc",
+  "background_color": "#fbf5ee",
   "display": "standalone"
 }

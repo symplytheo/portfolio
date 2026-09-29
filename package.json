@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portfolio of Theophilus O. Iyonor — Senior Frontend Engineer",
+  "description": "Portfolio of Theophilus O. Iyonor — Software Engineer",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

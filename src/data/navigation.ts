@@ -1,10 +1,9 @@
-/** Site navigation links (header + mobile menu). */
+/** Site navigation links (header + mobile menu). Absolute so they work from /resume too. */
 
 export const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#education", label: "Education" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#work", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#services", label: "Services" },
+  { href: "/#contact", label: "Contact" },
 ] as const;

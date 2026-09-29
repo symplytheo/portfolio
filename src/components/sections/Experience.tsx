@@ -30,7 +30,7 @@ function RoleEntry({
           aria-hidden="true"
           className="absolute mt-2 ml-[-30.5px] h-2 w-2 rounded-full border border-(--brand) bg-page md:ml-[-44.5px]"
         />
-        <h3 className="font-display text-xl font-bold tracking-tightest text-body">
+        <h3 className="font-display text-2xl font-bold tracking-tightest text-body">
           {role.title}
           {role.type && (
             <span className="ml-2 font-mono text-xs font-normal text-soft">
@@ -71,9 +71,11 @@ export function Experience() {
   return (
     <Section
       id="experience"
+      index="03"
       eyebrow="Experience"
-      title="Six years, from internship to architecture lead"
-      lead="A reverse-chronological record. Each entry is numbered like a ledger line — the most recent work at the top."
+      title="Six years, from internship to architecture lead."
+      note="the on-page CV ↓"
+      lead="A reverse-chronological record — the most recent work at the top. Prefer a document? The full résumé is one click away."
     >
       <ol className="divide-y divide-(--border)">
         {experience.map((role, index) => (
